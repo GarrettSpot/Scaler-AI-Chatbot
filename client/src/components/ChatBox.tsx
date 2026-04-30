@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Message } from './Message';
 import { MessageInput } from './MessageInput';
 import { PersonaSwitcher } from './PersonaSwitcher';
-import { sendMessage, fetchPersonas, ChatMessage } from '../services/chatApi';
+import { sendMessage, fetchPersonas } from '../services/chatApi';
+import type { ChatMessage } from '../services/chatApi';
 import './ChatBox.css';
 
 interface Persona {
