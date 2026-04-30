@@ -1,5 +1,5 @@
 import { ChatBox } from './components/ChatBox'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="app">
       <ChatBox />
-      <Analytics></Analytics>
+      <Analytics/>
     </div>
   )
 }
