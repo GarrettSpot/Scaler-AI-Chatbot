@@ -54,7 +54,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Call Gemini API with persona system prompt
-    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
     const chat = model.startChat({
       history: [
