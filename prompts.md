@@ -136,16 +136,3 @@ Assistant: It depends on your schedule, but 2–4 focused hours daily can be eff
 * Stay practical and clear
 * Maintain helpful tone
 
----
-
-# Reflection
-
-Designing these system prompts made it clear how critical prompt quality is to output quality. The biggest thing that worked well was clearly defining tone and constraints. By explicitly stating communication style (e.g., "frank" vs "diplomatic"), the model produced noticeably different personalities. The few-shot examples were especially effective - they anchored the behavior far better than just descriptive instructions. Without examples, the responses tended to drift into generic "AI tutor" mode.
-
-The GIGO (Garbage In, Garbage Out) principle became very obvious during this process. When prompts were vague (e.g., "be helpful"), the outputs were bland and inconsistent. But when the inputs were specific - including tone, structure, and constraints - the outputs became sharp and aligned. Even small details like “end with a question” or “avoid generic motivation” significantly improved response quality. It reinforced that LLMs are not “smart” by default; they mirror the clarity and structure of the input they receive.
-
-Another key learning was the importance of constraints. Without them, the model tends to default to safe, generic responses. By explicitly restricting behaviors (e.g., no fluff, no breaking persona), the responses became more distinctive and usable. The chain-of-thought instruction also helped improve reasoning quality while keeping outputs clean.
-
-If I were to improve this further, I would refine the few-shot examples even more by covering edge cases (e.g, emotional questions, unclear queries, or contradictory user inputs). I would also experiment with adding negative examples (what NOT to do) to strengthen persona boundaries. Additionally, I would iterate based on real user interactions - observing where the model breaks character or gives weak answers and then tightening the prompt accordingly.
-
-Overall, this exercise showed that prompt engineering is less about clever wording and more about structured thinking. The better you define behavior, the better the model performs.
