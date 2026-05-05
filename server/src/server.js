@@ -4,14 +4,14 @@ import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { getSystemPrompt, getAllPersonas } from './personaPrompts.js';
 
-dotenv.config();
+dotenv.config( { path: '../.env' } );
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5174',
+  origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true
 }));
 app.use(express.json());
@@ -42,9 +42,6 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Persona must be specified' });
     }
 
-    // Sanitize and validate message
-    const sanitizedMessage = message.trim().slice(0, 2000); // Limit to 2000 chars
-
     // Get system prompt for the selected persona
     let systemPrompt;
     try {
@@ -54,7 +51,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Call Gemini API with persona system prompt
-    const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL });
+    const model = genAI.getGenerativeModel( { model: process.env.GEMINI_MODEL || 'gemini-2.5-flash' });
     
     const chat = model.startChat({
       history: [
@@ -74,7 +71,7 @@ app.post('/api/chat', async (req, res) => {
       },
     });
     
-    const result = await chat.sendMessage(sanitizedMessage);
+    const result = await chat.sendMessage(message);
     const assistantMessage = result.response.text();
 
     res.json({
